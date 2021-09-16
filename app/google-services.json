@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "718095686963",
+    "project_id": "cuetify-final-a27ad",
+    "storage_bucket": "cuetify-final-a27ad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:718095686963:android:8cb6a59ab9687d53a63246",
+        "android_client_info": {
+          "package_name": "com.example.final_cuetify"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "718095686963-49d7u8rcu1ndmae92nnl9nmmbqhhbb7g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFsn1xtcj6O4srArCQ0YOP5LU8Qe7faYk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "718095686963-49d7u8rcu1ndmae92nnl9nmmbqhhbb7g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
