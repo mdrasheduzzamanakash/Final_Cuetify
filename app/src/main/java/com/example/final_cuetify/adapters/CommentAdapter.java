@@ -46,6 +46,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         private ImageView delete_button, like_button;
         private RoundedImageView profileImage;
 
+
         public ViewHolderComment(@NonNull View itemView) {
             super(itemView);
             this.comment_message = itemView.findViewById(R.id.comment_message);
@@ -68,6 +69,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
 
         @Override
         public boolean onLongClick(View v) {
+            delete_button.setVisibility(View.VISIBLE);
             return true;
         }
     }

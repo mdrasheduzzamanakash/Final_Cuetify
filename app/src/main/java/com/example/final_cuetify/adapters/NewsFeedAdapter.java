@@ -100,15 +100,22 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<NewsFeedAdapter.ViewHo
             int id = v.getId();
             switch (id) {
                 case R.id.news_feed_like:
-                    // add a like
+                    like.playAnimation();
                     break;
                 case R.id.news_feed_love:
+                    love.playAnimation();
+                    break;
                     // add a love
                 case R.id.news_feed_angry:
+                    angry.playAnimation();
+                    break;
                     // add an angry
                 case R.id.news_feed_sad:
+                    sad.playAnimation();
+                    break;
                     // add a sad
                 case R.id.news_feed_comment:
+                    comment.playAnimation();
                     loadComment();
                     break;
                 case R.id.addCommentButton:

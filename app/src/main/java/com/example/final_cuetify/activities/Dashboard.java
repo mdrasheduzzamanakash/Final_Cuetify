@@ -4,10 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
@@ -26,15 +29,20 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Dashboard extends AppCompatActivity implements View.OnClickListener {
+public class Dashboard extends AppCompatActivity implements View.OnClickListener , View.OnLongClickListener {
 
     private RecyclerView news_feed_rec_view;
     private PreferenceManager preferenceManager;
-    private FloatingActionButton add_feed_button;
-    private FloatingActionButton feed_cancel_button;
+    private Button feed_cancel_button;
     private ScrollView feeds_posting;
     private Button post_comfirm;
     private EditText post_writting_field;
+
+
+    LottieAnimationView menuID, menuCancelID, myProfile, myFriends, myFaculty, myStudents;
+    LinearLayout hidden_layout_menu;
+
+
 
     private String user_unique_id;
     private String encode_image;
@@ -72,8 +80,6 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
                 .addOnSuccessListener(documentReference -> {
                     feeds_posting.setVisibility(View.INVISIBLE);
                     news_feed_rec_view.setVisibility(View.VISIBLE);
-                    feed_cancel_button.setVisibility(View.INVISIBLE);
-                    add_feed_button.setVisibility(View.VISIBLE);
                     Toast.makeText(getApplicationContext(), "Posted Successfully", Toast.LENGTH_SHORT).show();
                     post_writting_field.setText("");
                     fetchDataForNewFeed();
@@ -87,30 +93,65 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.add_feed_button:
-                feeds_posting.setVisibility(View.VISIBLE);
-                news_feed_rec_view.setVisibility(View.INVISIBLE);
-                add_feed_button.setVisibility(View.INVISIBLE);
-                feed_cancel_button.setVisibility(View.VISIBLE);
-                break;
             case R.id.back_add_feed_button:
                 feeds_posting.setVisibility(View.INVISIBLE);
                 news_feed_rec_view.setVisibility(View.VISIBLE);
-                feed_cancel_button.setVisibility(View.INVISIBLE);
-                add_feed_button.setVisibility(View.VISIBLE);
+                menuID.setVisibility(View.VISIBLE);
                 break;
             case R.id.btn_post:
                 if(isValidInput()) {
                     postTheFeed();
                     feeds_posting.setVisibility(View.INVISIBLE);
                     news_feed_rec_view.setVisibility(View.VISIBLE);
-                    feed_cancel_button.setVisibility(View.INVISIBLE);
-                    add_feed_button.setVisibility(View.VISIBLE);
+                    menuID.setVisibility(View.VISIBLE);
                     break;
                 } else {
                     Toast.makeText(getApplicationContext(), "Please write first", Toast.LENGTH_SHORT).show();
+                    break;
                 }
+            case R.id.menu_id:
+                feeds_posting.setVisibility(View.VISIBLE);
+                news_feed_rec_view.setVisibility(View.INVISIBLE);
+                menuID.setVisibility(View.INVISIBLE);
+                break;
+            case R.id.menu_id_cancel:
+                hidden_layout_menu.setVisibility(View.INVISIBLE);
+                menuID.setVisibility(View.VISIBLE);
+                menuCancelID.setVisibility(View.INVISIBLE);
+                feeds_posting.setVisibility(View.INVISIBLE);
+                news_feed_rec_view.setVisibility(View.VISIBLE);
+                break;
+            case R.id.myProfile:
+                Intent intent = new Intent(getApplicationContext(), MyProfile.class);
+                startActivity(intent);
+                break;
+            case R.id.allStudents:
+                Intent intent1 = new Intent(getApplicationContext(), StudentsActivity.class);
+                startActivity(intent1);
+                break;
+            case R.id.allFaculty:
+                Intent intent2 = new Intent(getApplicationContext(), FacultyActivity.class);
+                startActivity(intent2);
+                break;
+            case R.id.allFriends:
+                Intent intent3 = new Intent(getApplicationContext(), FriendsActivity.class);
+                startActivity(intent3);
+                break;
         }
+    }
+
+    @Override
+    public boolean onLongClick(View v) {
+        switch (v.getId()) {
+            case R.id.menu_id:
+                hidden_layout_menu.setVisibility(View.VISIBLE);
+                news_feed_rec_view.setVisibility(View.INVISIBLE);
+                menuID.setVisibility(View.INVISIBLE);
+                menuCancelID.setVisibility(View.VISIBLE);
+                feeds_posting.setVisibility(View.INVISIBLE);
+                break;
+        }
+        return true;
     }
 
     @Override
@@ -118,7 +159,6 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
         post_writting_field = findViewById(R.id.post_edittext);
-        add_feed_button = findViewById(R.id.add_feed_button);
         feeds_posting = findViewById(R.id.news_feed_new_post_field);
         feed_cancel_button = findViewById(R.id.back_add_feed_button);
         post_comfirm = findViewById(R.id.btn_post);
@@ -137,9 +177,25 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
         name = preferenceManager.getString(Constants.KEY_NAME);
         message = post_writting_field.getText().toString();
 
-        add_feed_button.setOnClickListener(this);
+
+
+        myFaculty = findViewById(R.id.allFaculty);
+        myFriends = findViewById(R.id.allFriends);
+        myStudents = findViewById(R.id.allStudents);
+        myProfile = findViewById(R.id.myProfile);
+        menuCancelID = findViewById(R.id.menu_id_cancel);
+        menuID = findViewById(R.id.menu_id);
+        hidden_layout_menu = findViewById(R.id.hiddenMenuID);
+
         feed_cancel_button.setOnClickListener(this);
         post_comfirm.setOnClickListener(this);
+        myFaculty.setOnClickListener(this);
+        myFriends.setOnClickListener(this);
+        myStudents.setOnClickListener(this);
+        myProfile.setOnClickListener(this);
+        menuID.setOnClickListener(this);
+        menuCancelID.setOnClickListener(this);
+        menuID.setOnLongClickListener(this);
 
         fetchDataForNewFeed();
     }

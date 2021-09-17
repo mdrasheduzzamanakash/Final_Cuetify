@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.MyProfile"
+    android:clipToPadding="false"
+    android:orientation="vertical"
+    android:overScrollMode="never"
+    android:background="@drawable/background_profile"
+    android:scrollbars="none">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/background_rec_solid"
+        android:layout_height="match_parent">
+
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:layout_width="@dimen/_171sdp"
+            android:layout_height="@dimen/_160sdp"
+            android:src="@drawable/image1"
+            android:id="@+id/profile_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:riv_oval="true"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="i am a new bie"
+            app:layout_constraintStart_toStartOf="@+id/profile_image"
+            app:layout_constraintEnd_toEndOf="@+id/profile_image"
+            android:gravity="center_horizontal"
+            android:id="@+id/textBio"
+            app:layout_constraintTop_toBottomOf="@+id/profile_image"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:id="@+id/view"
+            android:layout_height="@dimen/_2sdp"
+            android:background="@color/primary"
+            app:layout_constraintTop_toBottomOf="@+id/textBio"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Friend List"
+            app:layout_constraintTop_toBottomOf="@+id/view"
+            android:textSize="@dimen/_20sdp"
+            android:textStyle="bold"
+            android:gravity="center_horizontal"
+            android:id="@+id/frandListText"
+            android:layout_marginTop="@dimen/_20sdp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/frandListText"
+            android:padding="@dimen/_20sdp"
+            android:maxHeight="@dimen/_300sdp"
+            android:id="@+id/profile_rec_friend_list"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:id="@+id/view1"
+            android:layout_height="@dimen/_2sdp"
+            android:background="@color/primary"
+            app:layout_constraintTop_toBottomOf="@+id/profile_rec_friend_list"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Feed Posted"
+            app:layout_constraintTop_toBottomOf="@+id/view1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:gravity="center_horizontal"
+            android:textStyle="bold"
+            android:textSize="@dimen/_17sdp"
+            android:id="@+id/feedPostedText"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_20sdp"
+            android:id="@+id/profile_news_feed_posted"
+            app:layout_constraintTop_toBottomOf="@id/feedPostedText"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

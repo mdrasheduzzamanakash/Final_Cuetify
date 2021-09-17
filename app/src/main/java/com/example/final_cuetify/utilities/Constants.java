@@ -42,4 +42,16 @@ public class Constants {
     public static final String KEY_COMMENT_FEED_ID = "comment_feed_id";
     public static final String KEY_COMMENTER_STATUS = "commenter_status";
     public static final String KEY_COMMENTS_COLLECTION = "comments";
+
+
+    // add friend
+    public static final String KEY_COLLECTION_FRIEND_REQUEST = "friendRequests";
+    public static final String KEY_FR_NAME = "name";
+    public static final String KEY_FR_UNI_ID = "uni_id";
+    public static final String KEY_FR_USER_KEY = "userId";
+    public static final String KEY_FR_SENDER_KEY = "sender";
+    public static final String KEY_FR_RECEIVER_KEY = "receiver";
+    public static final String KEY_FR_IMAGE = "image";
+    public static final String KEY_FR_ALREADY_SENT = "sent";
+    public static final String KEY_FR_ALREADY_NOT_SENT = "not_sent";
 }

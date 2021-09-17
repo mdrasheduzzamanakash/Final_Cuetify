@@ -73,14 +73,17 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_1sdp"
             android:background="@color/primary"/>
+
         <TextView
+            android:id="@+id/news_feed_message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/_11sdp"
-            android:text="hello! my name is md rasheduzaman"
             android:layout_marginStart="@dimen/_6sdp"
             android:layout_marginTop="@dimen/_6sdp"
-            android:id="@+id/news_feed_message"/>
+            android:fontFamily="@font/abhaya_libre_semibold"
+            android:textColor="@color/primary_text"
+            android:text="hello! my name is md rasheduzaman"
+            android:textSize="@dimen/_14sdp" />
 
 
 
