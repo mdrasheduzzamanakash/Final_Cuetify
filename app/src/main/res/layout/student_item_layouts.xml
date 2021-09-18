@@ -82,6 +82,7 @@
                     android:layout_marginTop="@dimen/_3sdp"
                     android:background="#000000"
                     android:padding="@dimen/_4sdp"
+                    android:layout_gravity="center"
                     android:text="Add Friend"
                     android:textColor="@color/white" />
 
@@ -99,7 +100,7 @@
                     android:layout_marginTop="@dimen/_3sdp"
                     android:background="#0C25FF"
                     android:padding="@dimen/_4sdp"
-                    android:text="Cncel Request"
+                    android:text="Cancel Request"
                     android:textColor="@color/white"
                     android:visibility="gone" />
 

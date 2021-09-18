@@ -32,11 +32,11 @@ public class FacultyAdapter extends RecyclerView.Adapter<FacultyAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         PreferenceManager preferenceManager = new PreferenceManager(holder.itemView.getContext());
-        if(preferenceManager.getString(Constants.KEY_STATUS).equals("faculty")) {
+        if(preferenceManager.getString(Constants.KEY_STATUS).equals("student")) {
+            holder.erro_message.setVisibility(View.VISIBLE);
+        } else {
             holder.erro_message.setVisibility(View.INVISIBLE);
             holder.connect.setVisibility(View.VISIBLE);
-        } else {
-            holder.erro_message.setVisibility(View.VISIBLE);
         }
         holder.name.setText(data.get(holder.getAdapterPosition()).name);
         holder.email.setText(data.get(holder.getAdapterPosition()).email);

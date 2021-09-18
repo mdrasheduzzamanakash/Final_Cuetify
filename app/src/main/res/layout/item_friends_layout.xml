@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/_12sdp"
+    android:background="@drawable/border_background"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:id="@+id/messageFriend"
+        android:text="Connected Together"
+        android:textColor="#0B9F24"
+        app:layout_constraintEnd_toStartOf="@+id/image_another_one"
+        app:layout_constraintStart_toEndOf="@+id/image_first_one"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/image_first_one"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:src="@drawable/image1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:riv_oval="true" />
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/image_another_one"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:src="@drawable/image1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:riv_oval="true" />
+
+    <LinearLayout
+        android:id="@+id/linear_1"
+        android:layout_width="@dimen/_140sdp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="@+id/image_first_one"
+        app:layout_constraintTop_toBottomOf="@+id/image_first_one">
+
+        <TextView
+            android:id="@+id/name_first"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Md Rasheduzzaman" />
+
+        <TextView
+            android:id="@+id/id_first"
+            android:layout_width="wrap_content"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:text="1704007" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_2"
+        android:layout_width="@dimen/_140sdp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="end"
+        app:layout_constraintEnd_toEndOf="@+id/image_another_one"
+        app:layout_constraintTop_toBottomOf="@+id/image_another_one">
+
+        <TextView
+            android:id="@+id/name_second"
+            android:layout_width="wrap_content"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:text="Md Rasheduzzaman" />
+
+        <TextView
+            android:id="@+id/id_second"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="1704007" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/linear_2"
+        app:layout_constraintStart_toStartOf="@+id/linear_1"
+        app:layout_constraintTop_toBottomOf="@+id/linear_1"
+        android:id="@+id/view1"/>
+
+    <LinearLayout
+        android:layout_width="386dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/linear_2"
+        app:layout_constraintStart_toStartOf="@+id/linear_1"
+        app:layout_constraintTop_toTopOf="@+id/view1">
+
+        <Button
+            android:id="@+id/seePlus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:text="SEE+" />
+
+        <Button
+            android:id="@+id/remove_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:text="UNFRIEND"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/Unfollow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="UNfollow"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

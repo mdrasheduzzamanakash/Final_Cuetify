@@ -46,6 +46,7 @@
         <entry key="app/src/main/res/layout/item_container_sent_message.xml" value="0.3765625" />
         <entry key="app/src/main/res/layout/item_container_user.xml" value="0.3765625" />
         <entry key="app/src/main/res/layout/item_faculty_layout.xml" value="0.3765625" />
+        <entry key="app/src/main/res/layout/item_friends_layout.xml" value="0.3765625" />
         <entry key="app/src/main/res/layout/item_news_feed.xml" value="0.3765625" />
         <entry key="app/src/main/res/layout/item_view_follower.xml" value="0.3765625" />
         <entry key="app/src/main/res/layout/student_item_layouts.xml" value="0.3765625" />

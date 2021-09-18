@@ -64,7 +64,7 @@ public class FollowingActivity extends AppCompatActivity {
                             following.doc_id = queryDocumentSnapshot.getId();
                             data.add(following);
                         }
-                        Toast.makeText(getApplicationContext(), data.get(0).name, Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getApplicationContext(), data.get(0).name, Toast.LENGTH_SHORT).show();
 
                         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                         recyclerView.setAdapter(new FollowingAdapter(data));

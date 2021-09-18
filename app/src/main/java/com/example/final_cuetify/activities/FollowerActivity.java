@@ -45,7 +45,7 @@ public class FollowerActivity extends AppCompatActivity {
                         for(DocumentSnapshot documentSnapshot : task.getResult()) {
                             User user = new User();
                             user.image = documentSnapshot.getString(Constants.KEY_IMAGE);
-                            user.name = documentSnapshot.getString(Constants.KEY_NAME);
+                            user.name = documentSnapshot.getString(Constants.KEY_FR_SENDER_NAME);
                             user.id = documentSnapshot.getId(); // it is available in item_follower_layout_text_view
                             user.status = documentSnapshot.getString(Constants.KEY_STATUS);
                             user.uni_id = documentSnapshot.getString(Constants.KEY_UNI_ID);

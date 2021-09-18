@@ -20,6 +20,7 @@ import java.util.ArrayList;
 public class StudentsActivity extends AppCompatActivity {
 
     private RecyclerView st_rec_view;
+    private StudentAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +37,9 @@ public class StudentsActivity extends AppCompatActivity {
                 .addOnCompleteListener(task -> {
                     PreferenceManager preferenceManager = new PreferenceManager(getApplicationContext());
                     ArrayList<User> users = new ArrayList<>();
-                    if(task.isSuccessful() && task.getResult() != null && task.getResult().getDocuments().size() > 0) {
+                    if (task.isSuccessful() && task.getResult() != null && task.getResult().getDocuments().size() > 0) {
 
-                        for(DocumentSnapshot documentSnapshot : task.getResult()) {
+                        for (DocumentSnapshot documentSnapshot : task.getResult()) {
                             User user = new User();
                             user.image = documentSnapshot.getString(Constants.KEY_IMAGE);
                             user.name = documentSnapshot.getString(Constants.KEY_NAME);
@@ -49,12 +50,12 @@ public class StudentsActivity extends AppCompatActivity {
                             user.phone = documentSnapshot.getString(Constants.KEY_PHONE);
                             user.uni_id = documentSnapshot.getString(Constants.KEY_UNI_ID);
 
-                            if(!user.id.equals(preferenceManager.getString(Constants.KEY_USER_ID))){
+                            if (!user.id.equals(preferenceManager.getString(Constants.KEY_USER_ID))) {
                                 users.add(user);
                             }
                         }
 
-                        StudentAdapter adapter = new StudentAdapter(users);
+                        adapter = new StudentAdapter(users);
                         st_rec_view.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                         st_rec_view.setAdapter(adapter);
                     }
@@ -62,5 +63,12 @@ public class StudentsActivity extends AppCompatActivity {
                 .addOnFailureListener(exception -> {
                     Toast.makeText(getApplicationContext(), "Unable to load", Toast.LENGTH_SHORT).show();
                 });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        st_rec_view.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        st_rec_view.setAdapter(adapter);
     }
 }

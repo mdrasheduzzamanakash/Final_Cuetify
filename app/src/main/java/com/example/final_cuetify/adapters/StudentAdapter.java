@@ -1,5 +1,6 @@
 package com.example.final_cuetify.adapters;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,7 +58,7 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.ViewHold
 
 
         private RoundedImageView profileImage;
-        private TextView name, uni_id, status, addFriend, remove, user_key, req_button;
+        private TextView name, uni_id, status, addFriend, remove, user_key, req_button, remove_btn;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             profileImage = itemView.findViewById(R.id.image_st_item);
@@ -155,8 +156,11 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.ViewHold
                         preferenceManager.putString(to_whom_key, Constants.KEY_FR_ALREADY_SENT);
                         preferenceManager.putString(friend_request_id, documentReference.getId());
                         itemView.findViewById(R.id.progressBarAddFriend).setVisibility(View.INVISIBLE);
-                        addFriend.setVisibility(View.INVISIBLE);
-                        req_button.setVisibility(View.VISIBLE);
+                        addFriend.setVisibility(View.VISIBLE);
+                        addFriend.setText("Friend Request Sent");
+                        addFriend.setBackgroundColor(Color.BLUE);
+                        remove.setVisibility(View.INVISIBLE);
+                        Toast.makeText(itemView.getContext(),   "You can cancel the request from 'Following'", Toast.LENGTH_SHORT).show();
                     })
                     .addOnFailureListener(exception-> {
                         itemView.findViewById(R.id.progressBarAddFriend).setVisibility(View.INVISIBLE);
