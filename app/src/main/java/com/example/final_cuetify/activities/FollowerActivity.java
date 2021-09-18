@@ -52,7 +52,6 @@ public class FollowerActivity extends AppCompatActivity {
                             user.sender = documentSnapshot.getString(Constants.KEY_FR_SENDER_KEY);
                             user.receiver = documentSnapshot.getString(Constants.KEY_FR_RECEIVER_KEY);
 
-
                             if(my_key.equals(user.receiver)) {
                                 users.add(user);
                                 adapter.notifyDataSetChanged();

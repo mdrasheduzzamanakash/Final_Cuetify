@@ -61,6 +61,7 @@ public class FollowerAdapter extends RecyclerView.Adapter<FollowerAdapter.ViewHo
                 friend.friend_id = data.get(holder.getAdapterPosition()).uni_id;
                 friend.friend_key = data.get(holder.getAdapterPosition()).sender;
                 friend.my_key = data.get(holder.getAdapterPosition()).receiver;
+
 //                Toast.makeText(v.getContext(), data.get(holder.getAdapterPosition()).id, Toast.LENGTH_SHORT).show();
 
                 FirebaseFirestore database = FirebaseFirestore.getInstance();

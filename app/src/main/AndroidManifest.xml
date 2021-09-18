@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Final_Cuetify">
         <activity
+            android:name=".activities.FollowingActivity"
+            android:exported="true" />
+        <activity
             android:name=".activities.FollowerActivity"
             android:exported="true" />
         <activity

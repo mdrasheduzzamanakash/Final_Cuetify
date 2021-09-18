@@ -140,6 +140,14 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
             case R.id.wantsToConnect:
                 Intent intent4 = new Intent(getApplicationContext(), FollowerActivity.class);
                 startActivity(intent4);
+                break;
+            case R.id.folowing:
+                Intent intent5 = new Intent(getApplicationContext(), FollowingActivity.class);
+                startActivity(intent5);
+                break;
+
+            default:
+                break;
         }
     }
 

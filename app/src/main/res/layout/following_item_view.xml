@@ -2,10 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/_20sdp"
-    android:layout_margin="@dimen/_20sdp"
+    android:padding="@dimen/_10sdp"
     android:background="@drawable/border_background"
+    android:layout_margin="@dimen/_15sdp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
 
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/fac_profile_image"
@@ -45,8 +46,10 @@
         android:id="@+id/fac_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="faculty_sir@gmail.com"
-        android:textColor="#1C80DD"
+        android:layout_marginTop="20dp"
+        android:text="Request Pending"
+        android:textColor="#0C7322"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/department"
         app:layout_constraintStart_toStartOf="@+id/department"
         app:layout_constraintTop_toBottomOf="@+id/department" />
@@ -55,22 +58,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="@dimen/_5sdp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintEnd_toEndOf="@+id/department"
+        android:layout_marginTop="@dimen/_20sdp"
+        app:layout_constraintStart_toStartOf="@+id/department"
+        app:layout_constraintTop_toBottomOf="@+id/fac_email">
 
         <TextView
-            android:id="@+id/btn_connect"
+            android:id="@+id/btn_cancel_request"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/black"
+            android:background="@color/error"
             android:padding="@dimen/_5sdp"
-            android:text="Connect"
+            android:text="Cancel Request"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:visibility="invisible" />
+            android:visibility="visible" />
 
         <ProgressBar
             android:id="@+id/progressBarConnect"
@@ -80,18 +83,6 @@
             android:visibility="invisible" />
     </FrameLayout>
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Only Class representative can connect"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/fac_email"
-        android:textColor="@color/error"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="@+id/fac_email"
-        app:layout_constraintTop_toBottomOf="@+id/fac_email"
-        app:layout_constraintVertical_bias="0.423" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

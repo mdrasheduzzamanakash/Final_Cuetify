@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.final_cuetify.R;
 import com.example.final_cuetify.models.Faculty;
-import com.example.final_cuetify.models.User;
 import com.example.final_cuetify.utilities.Constants;
 import com.example.final_cuetify.utilities.PreferenceManager;
 
@@ -56,7 +55,7 @@ public class FacultyAdapter extends RecyclerView.Adapter<FacultyAdapter.ViewHold
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             dep_name = itemView.findViewById(R.id.department);
-            name = itemView.findViewById(R.id.fac_name);
+            name = itemView.findViewById(R.id.following_name);
             email = itemView.findViewById(R.id.fac_email);
             connect = itemView.findViewById(R.id.btn_connect);
             erro_message = itemView.findViewById(R.id.textView);

@@ -29,6 +29,7 @@
         <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_faculty.xml" value="0.3765625" />
         <entry key="app/src/main/res/layout/activity_follower.xml" value="0.3765625" />
+        <entry key="app/src/main/res/layout/activity_following.xml" value="0.3765625" />
         <entry key="app/src/main/res/layout/activity_friends.xml" value="0.3765625" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3765625" />
         <entry key="app/src/main/res/layout/activity_my_profile.xml" value="0.3765625" />
@@ -38,6 +39,7 @@
         <entry key="app/src/main/res/layout/activity_users.xml" value="0.3765625" />
         <entry key="app/src/main/res/layout/comment_layout.xml" value="0.3765625" />
         <entry key="app/src/main/res/layout/faculty_item_layout.xml" value="0.3765625" />
+        <entry key="app/src/main/res/layout/following_item_view.xml" value="0.3765625" />
         <entry key="app/src/main/res/layout/item_container_received_message.xml" value="0.3765625" />
         <entry key="app/src/main/res/layout/item_container_recent_conversation.xml" value="0.3765625" />
         <entry key="app/src/main/res/layout/item_container_recent_message.xml" value="0.3765625" />
