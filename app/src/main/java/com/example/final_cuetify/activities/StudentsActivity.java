@@ -11,6 +11,7 @@ import com.example.final_cuetify.R;
 import com.example.final_cuetify.adapters.StudentAdapter;
 import com.example.final_cuetify.models.User;
 import com.example.final_cuetify.utilities.Constants;
+import com.example.final_cuetify.utilities.PreferenceManager;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -30,9 +31,10 @@ public class StudentsActivity extends AppCompatActivity {
 
         FirebaseFirestore database = FirebaseFirestore.getInstance();
         database.collection(Constants.KEY_COLLECTION_USERS)
-                .whereEqualTo(Constants.KEY_STATUS, "student")
+                .whereNotEqualTo(Constants.KEY_STATUS, "faculty")
                 .get()
                 .addOnCompleteListener(task -> {
+                    PreferenceManager preferenceManager = new PreferenceManager(getApplicationContext());
                     ArrayList<User> users = new ArrayList<>();
                     if(task.isSuccessful() && task.getResult() != null && task.getResult().getDocuments().size() > 0) {
 
@@ -47,7 +49,7 @@ public class StudentsActivity extends AppCompatActivity {
                             user.phone = documentSnapshot.getString(Constants.KEY_PHONE);
                             user.uni_id = documentSnapshot.getString(Constants.KEY_UNI_ID);
 
-                            if(user.id != Constants.KEY_USER_ID){
+                            if(!user.id.equals(preferenceManager.getString(Constants.KEY_USER_ID))){
                                 users.add(user);
                             }
                         }

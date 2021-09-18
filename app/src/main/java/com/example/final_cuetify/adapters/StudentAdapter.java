@@ -111,28 +111,35 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.ViewHold
 
 //            Toast.makeText(itemView.getContext(), key+"fd", Toast.LENGTH_SHORT).show();
             FirebaseFirestore database = FirebaseFirestore.getInstance();
-            database.collection(Constants.KEY_COLLECTION_FRIEND_REQUEST)
-                    .document(key)
-                    .delete()
-                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void unused) {
-                            itemView.findViewById(R.id.progressBarAddFriend).setVisibility(View.INVISIBLE);
-                            addFriend.setVisibility(View.VISIBLE);
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
+            if(key != null){
 
-                        }
-                    });
+                database.collection(Constants.KEY_COLLECTION_FRIEND_REQUEST)
+                        .document(key)
+                        .delete()
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                itemView.findViewById(R.id.progressBarAddFriend).setVisibility(View.INVISIBLE);
+                                addFriend.setVisibility(View.VISIBLE);
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+
+                            }
+                        });
+            } else {
+                itemView.findViewById(R.id.progressBarAddFriend).setVisibility(View.INVISIBLE);
+                addFriend.setVisibility(View.VISIBLE);
+            }
         }
 
         public void funcionAddFriend() {
             PreferenceManager preferenceManager = new PreferenceManager(itemView.getContext());
             HashMap<String, Object> request = new HashMap<>();
-            request.put(Constants.KEY_FR_NAME, preferenceManager.getString(Constants.KEY_NAME));
+            request.put(Constants.KEY_FR_SENDER_NAME, preferenceManager.getString(Constants.KEY_NAME));
+            request.put(Constants.KEY_FR_RECEIVER_NAME, name.getText().toString());
             request.put(Constants.KEY_FR_UNI_ID, preferenceManager.getString(Constants.KEY_UNI_ID));
             request.put(Constants.KEY_FR_SENDER_KEY, preferenceManager.getString(Constants.KEY_USER_ID));
             request.put(Constants.KEY_FR_RECEIVER_KEY, user_key.getText().toString());
@@ -143,9 +150,10 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.ViewHold
             database.collection(Constants.KEY_COLLECTION_FRIEND_REQUEST)
                     .add(request)
                     .addOnSuccessListener(documentReference -> {
-                        String key = user_key.getText().toString();
-                        preferenceManager.putString(key, Constants.KEY_FR_ALREADY_SENT);
-                        preferenceManager.putString(key + key, documentReference.getId());
+                        String to_whom_key = user_key.getText().toString();
+                        String friend_request_id = to_whom_key + to_whom_key;
+                        preferenceManager.putString(to_whom_key, Constants.KEY_FR_ALREADY_SENT);
+                        preferenceManager.putString(friend_request_id, documentReference.getId());
                         itemView.findViewById(R.id.progressBarAddFriend).setVisibility(View.INVISIBLE);
                         addFriend.setVisibility(View.INVISIBLE);
                         req_button.setVisibility(View.VISIBLE);

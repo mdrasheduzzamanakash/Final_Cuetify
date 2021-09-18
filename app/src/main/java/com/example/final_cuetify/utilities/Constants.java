@@ -46,7 +46,8 @@ public class Constants {
 
     // add friend
     public static final String KEY_COLLECTION_FRIEND_REQUEST = "friendRequests";
-    public static final String KEY_FR_NAME = "name";
+    public static final String KEY_FR_SENDER_NAME = "seder_name";
+    public static final String KEY_FR_RECEIVER_NAME = "receiver_name";
     public static final String KEY_FR_UNI_ID = "uni_id";
     public static final String KEY_FR_USER_KEY = "userId";
     public static final String KEY_FR_SENDER_KEY = "sender";

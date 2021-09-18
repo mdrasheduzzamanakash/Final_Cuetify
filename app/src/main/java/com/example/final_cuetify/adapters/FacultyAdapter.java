@@ -56,7 +56,7 @@ public class FacultyAdapter extends RecyclerView.Adapter<FacultyAdapter.ViewHold
             super(itemView);
             dep_name = itemView.findViewById(R.id.department);
             name = itemView.findViewById(R.id.following_name);
-            email = itemView.findViewById(R.id.fac_email);
+            email = itemView.findViewById(R.id.status_message);
             connect = itemView.findViewById(R.id.btn_connect);
             erro_message = itemView.findViewById(R.id.textView);
         }

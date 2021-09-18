@@ -43,12 +43,12 @@
         app:layout_constraintTop_toBottomOf="@+id/following_name" />
 
     <TextView
-        android:id="@+id/fac_email"
+        android:id="@+id/status_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Request Pending"
-        android:textColor="#0C7322"
+        android:textColor="#FF6C6C"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/department"
         app:layout_constraintStart_toStartOf="@+id/department"
@@ -62,7 +62,7 @@
         app:layout_constraintEnd_toEndOf="@+id/department"
         android:layout_marginTop="@dimen/_20sdp"
         app:layout_constraintStart_toStartOf="@+id/department"
-        app:layout_constraintTop_toBottomOf="@+id/fac_email">
+        app:layout_constraintTop_toBottomOf="@+id/status_message">
 
         <TextView
             android:id="@+id/btn_cancel_request"
@@ -76,7 +76,7 @@
             android:visibility="visible" />
 
         <ProgressBar
-            android:id="@+id/progressBarConnect"
+            android:id="@+id/progressBarCancelReq"
             android:layout_width="@dimen/_15sdp"
             android:layout_height="@dimen/_20sdp"
             android:layout_gravity="center"
