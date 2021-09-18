@@ -109,6 +109,7 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.ViewHold
             preferenceManager.putString(user_key.getText().toString(), null);
             String key = preferenceManager.getString(user_key.getText().toString() + user_key.getText().toString());
 
+//            Toast.makeText(itemView.getContext(), key+"fd", Toast.LENGTH_SHORT).show();
             FirebaseFirestore database = FirebaseFirestore.getInstance();
             database.collection(Constants.KEY_COLLECTION_FRIEND_REQUEST)
                     .document(key)
@@ -135,6 +136,8 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.ViewHold
             request.put(Constants.KEY_FR_UNI_ID, preferenceManager.getString(Constants.KEY_UNI_ID));
             request.put(Constants.KEY_FR_SENDER_KEY, preferenceManager.getString(Constants.KEY_USER_ID));
             request.put(Constants.KEY_FR_RECEIVER_KEY, user_key.getText().toString());
+            request.put(Constants.KEY_FR_IMAGE, preferenceManager.getString(Constants.KEY_IMAGE));
+            request.put(Constants.KEY_FR_STATUS, preferenceManager.getString(Constants.KEY_STATUS));
 
             FirebaseFirestore database = FirebaseFirestore.getInstance();
             database.collection(Constants.KEY_COLLECTION_FRIEND_REQUEST)

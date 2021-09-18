@@ -3,15 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context=".activities.FacultyActivity">
+    android:layout_height="match_parent"
+    tools:context=".activities.FollowerActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rec_view_faculty"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </androidx.recyclerview.widget.RecyclerView>
+        android:layout_height="match_parent"
+        android:id="@+id/rec_view_follower"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

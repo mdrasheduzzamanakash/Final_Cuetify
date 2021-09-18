@@ -96,7 +96,6 @@
                 android:layout_width="@dimen/_30sdp"
                 android:layout_height="@dimen/_30sdp"
                 android:id="@+id/news_feed_like"
-                app:lottie_autoPlay="true"
                 app:lottie_rawRes="@raw/like"/>
             <LinearLayout
                 android:animateLayoutChanges="true"
@@ -109,20 +108,17 @@
                     android:layout_width="@dimen/_30sdp"
                     android:layout_height="@dimen/_30sdp"
                     android:id="@+id/news_feed_love"
-                    app:lottie_rawRes="@raw/love"
-                    app:lottie_autoPlay="true"/>
+                    app:lottie_rawRes="@raw/love" />
                 <com.airbnb.lottie.LottieAnimationView
                     android:layout_width="@dimen/_30sdp"
                     android:layout_height="@dimen/_30sdp"
                     android:id="@+id/news_feed_angry"
-                    app:lottie_rawRes="@raw/angry"
-                    app:lottie_autoPlay="true"/>
+                    app:lottie_rawRes="@raw/angry" />
                 <com.airbnb.lottie.LottieAnimationView
                     android:layout_width="@dimen/_30sdp"
                     android:layout_height="@dimen/_30sdp"
                     android:id="@+id/news_feed_sad"
-                    app:lottie_rawRes="@raw/sad"
-                    app:lottie_autoPlay="true"/>
+                    app:lottie_rawRes="@raw/sad" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -133,7 +129,6 @@
                 android:layout_width="@dimen/_30sdp"
                 android:layout_height="@dimen/_30sdp"
                 app:lottie_rawRes="@raw/comment"
-                app:lottie_autoPlay="true"
                 android:id="@+id/news_feed_comment"/>
             <TextView
                 android:layout_width="@dimen/_30sdp"

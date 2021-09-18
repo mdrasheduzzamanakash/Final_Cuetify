@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/_20sdp"
+    android:layout_margin="@dimen/_20sdp"
+    android:background="@drawable/border_background"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/fac_profile_image"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:src="@drawable/image1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:riv_oval="true" />
+
+
+    <TextView
+        android:id="@+id/fac_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Md Samsul Arefin"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_18sdp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/fac_profile_image"
+        app:layout_constraintStart_toStartOf="@+id/fac_profile_image"
+        app:layout_constraintTop_toBottomOf="@+id/fac_profile_image" />
+
+    <TextView
+        android:id="@+id/department"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chittagong University of Engineering and Technology"
+        android:textStyle="italic|bold"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="@+id/fac_name"
+        app:layout_constraintStart_toStartOf="@+id/fac_name"
+        app:layout_constraintTop_toBottomOf="@+id/fac_name" />
+
+    <TextView
+        android:id="@+id/fac_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="faculty_sir@gmail.com"
+        android:textColor="#1C80DD"
+        app:layout_constraintEnd_toEndOf="@+id/department"
+        app:layout_constraintStart_toStartOf="@+id/department"
+        app:layout_constraintTop_toBottomOf="@+id/department" />
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/_5sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <TextView
+            android:id="@+id/btn_connect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/black"
+            android:padding="@dimen/_5sdp"
+            android:text="Connect"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:visibility="invisible" />
+
+        <ProgressBar
+            android:id="@+id/progressBarConnect"
+            android:layout_width="@dimen/_15sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_gravity="center"
+            android:visibility="invisible" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Only Class representative can connect"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/fac_email"
+        android:textColor="@color/error"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="@+id/fac_email"
+        app:layout_constraintTop_toBottomOf="@+id/fac_email"
+        app:layout_constraintVertical_bias="0.423" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

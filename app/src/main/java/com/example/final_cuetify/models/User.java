@@ -4,4 +4,5 @@ import java.io.Serializable;
 
 public class User implements Serializable {
     public String name, image, email, token, uni_id, phone, status,id;
+    public String sender, receiver;
 }

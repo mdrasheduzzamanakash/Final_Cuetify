@@ -39,7 +39,7 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
     private EditText post_writting_field;
 
 
-    LottieAnimationView menuID, menuCancelID, myProfile, myFriends, myFaculty, myStudents;
+    LottieAnimationView menuID, menuCancelID, myProfile, myFriends, myFaculty, myStudents,myfollower, following;
     LinearLayout hidden_layout_menu;
 
 
@@ -137,6 +137,9 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
                 Intent intent3 = new Intent(getApplicationContext(), FriendsActivity.class);
                 startActivity(intent3);
                 break;
+            case R.id.wantsToConnect:
+                Intent intent4 = new Intent(getApplicationContext(), FollowerActivity.class);
+                startActivity(intent4);
         }
     }
 
@@ -183,6 +186,8 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
         myFriends = findViewById(R.id.allFriends);
         myStudents = findViewById(R.id.allStudents);
         myProfile = findViewById(R.id.myProfile);
+        myfollower = findViewById(R.id.wantsToConnect);
+        following = findViewById(R.id.folowing);
         menuCancelID = findViewById(R.id.menu_id_cancel);
         menuID = findViewById(R.id.menu_id);
         hidden_layout_menu = findViewById(R.id.hiddenMenuID);
@@ -196,6 +201,8 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
         menuID.setOnClickListener(this);
         menuCancelID.setOnClickListener(this);
         menuID.setOnLongClickListener(this);
+        following.setOnClickListener(this);
+        myfollower.setOnClickListener(this);
 
         fetchDataForNewFeed();
     }

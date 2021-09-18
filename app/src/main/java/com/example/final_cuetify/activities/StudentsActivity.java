@@ -46,7 +46,10 @@ public class StudentsActivity extends AppCompatActivity {
                             user.token = documentSnapshot.getString(Constants.KEY_FCM_TOKEN);
                             user.phone = documentSnapshot.getString(Constants.KEY_PHONE);
                             user.uni_id = documentSnapshot.getString(Constants.KEY_UNI_ID);
-                            users.add(user);
+
+                            if(user.id != Constants.KEY_USER_ID){
+                                users.add(user);
+                            }
                         }
 
                         StudentAdapter adapter = new StudentAdapter(users);

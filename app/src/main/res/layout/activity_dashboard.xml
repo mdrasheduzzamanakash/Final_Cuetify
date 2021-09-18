@@ -51,7 +51,6 @@
                 android:fontFamily="@font/aref_ruqaa"
                 android:gravity="center"
                 android:hint="Post your thought "
-                android:background="@drawable/border_background"
                 android:lines="6"
                 android:textSize="@dimen/_16sdp" />
             <LinearLayout
@@ -66,7 +65,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/btn_post"
-                        android:background="@drawable/border_background"
                         android:text="Go AHEAD"/>
                     <ProgressBar
                         android:id="@+id/progressBar_post"
@@ -78,7 +76,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Cancel"
-                    android:background="@drawable/border_background"
                     android:id="@+id/back_add_feed_button"/>
             </LinearLayout>
         </LinearLayout>
@@ -86,10 +83,11 @@
     </ScrollView>
 
     <LinearLayout
+        android:animateLayoutChanges="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/menu_id"
-        app:layout_constraintEnd_toEndOf="@+id/menu_id"
+        app:layout_constraintEnd_toStartOf="@+id/menu_id"
         android:id="@+id/hiddenMenuID"
         android:background="@color/white"
         android:visibility="invisible"
@@ -103,7 +101,6 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/background_rec_solid"
                 android:orientation="vertical">
                 <TextView
                     android:layout_width="wrap_content"
@@ -118,14 +115,13 @@
                     android:layout_height="@dimen/_100sdp"
                     app:lottie_autoPlay="true"
                     app:lottie_loop="true"
-                    app:lottie_rawRes="@raw/friends"
+                    app:lottie_rawRes="@raw/following"
                     android:id="@+id/folowing"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/background_rec_solid"
                 android:orientation="vertical">
                 <TextView
                     android:layout_width="wrap_content"
@@ -140,7 +136,7 @@
                     android:layout_height="@dimen/_100sdp"
                     app:lottie_autoPlay="true"
                     app:lottie_loop="true"
-                    app:lottie_rawRes="@raw/friends"
+                    app:lottie_rawRes="@raw/folower"
                     android:id="@+id/wantsToConnect"/>
             </LinearLayout>
         </LinearLayout>
@@ -152,7 +148,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/background_rec_solid" android:orientation="vertical">
+                android:orientation="vertical">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -173,7 +169,6 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/background_rec_solid"
 
                 android:orientation="vertical">
                 <TextView
@@ -199,14 +194,12 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/background_rec_solid"
 
             android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/background_rec_solid"
                 android:orientation="vertical">
 
                 <TextView
@@ -230,7 +223,6 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/background_rec_solid"
 
                 android:orientation="vertical">
                 <TextView

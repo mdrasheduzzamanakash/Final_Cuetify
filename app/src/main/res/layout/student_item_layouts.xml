@@ -1,46 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="@dimen/_15sdp"
-    android:background="@drawable/background_rec_solid"
+    android:layout_margin="@dimen/_20sdp"
+    android:background="@drawable/border_background"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.makeramen.roundedimageview.RoundedImageView
-        android:layout_width="@dimen/_100sdp"
-        android:layout_height="@dimen/_100sdp"
         android:id="@+id/image_st_item"
+        android:layout_width="@dimen/_70sdp"
+        android:layout_height="@dimen/_70sdp"
         android:src="@drawable/image1"
-        app:riv_oval="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:riv_oval="true" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:padding="@dimen/_3sdp"
-        app:layout_constraintTop_toTopOf="@+id/image_st_item"
-        app:layout_constraintStart_toEndOf="@+id/image_st_item"
-        android:layout_marginStart="@dimen/_10sdp"
-        android:orientation="vertical">
+        app:layout_constraintEnd_toEndOf="@+id/image_st_item"
+        app:layout_constraintStart_toStartOf="@+id/image_st_item"
+        app:layout_constraintTop_toBottomOf="@+id/image_st_item">
 
         <TextView
+            android:id="@+id/st_item_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Rasheduzzaman"
+            android:layout_gravity="center"
             android:layout_marginTop="@dimen/_3sdp"
-            android:textSize="@dimen/_17sdp"
+            android:gravity="center"
+            android:text="Rasheduzzaman"
+            android:textStyle="bold"
             android:textColor="@color/primary_text"
-            android:id="@+id/st_item_name"/>
-
+            android:textSize="@dimen/_17sdp" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1704007"
+            android:gravity="center"
+            android:text="Chittagong University of Engineering and Technology"/>
+
+        <TextView
+            android:id="@+id/st_item_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_2sdp"
-            android:textSize="@dimen/_12sdp"
+            android:text="1704007"
+            android:layout_gravity="center"
             android:textColor="@color/primary_text"
-            android:id="@+id/st_item_id"/>
+            android:textSize="@dimen/_12sdp" />
 
         <TextView
             android:id="@+id/st_status"
@@ -48,63 +60,70 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/_3sdp"
             android:text="Student"
+            android:layout_gravity="center"
             android:textColor="#FF0000"
             android:textStyle="bold" />
 
-            <LinearLayout
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/btn_add_friend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:background="#000000"
+                    android:padding="@dimen/_4sdp"
+                    android:text="Add Friend"
+                    android:textColor="@color/white" />
+
+                <ProgressBar
+                    android:id="@+id/progressBarAddFriend"
+                    android:layout_width="@dimen/_23sdp"
+                    android:layout_height="@dimen/_23sdp"
+                    android:layout_gravity="center"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/btn_requested"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:background="#0C25FF"
+                    android:padding="@dimen/_4sdp"
+                    android:text="Cncel Request"
+                    android:textColor="@color/white"
+                    android:visibility="gone" />
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/btn_remove"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <FrameLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/white"
-                        android:background="#000000"
-                        android:text="Add Friend"
-                        android:id="@+id/btn_add_friend"
-                        android:padding="@dimen/_4sdp"
-                        android:layout_marginTop="@dimen/_3sdp"/>
-                    <ProgressBar
-                        android:visibility="invisible"
-                        android:layout_width="@dimen/_23sdp"
-                        android:layout_height="@dimen/_23sdp"
-                        android:id="@+id/progressBarAddFriend"
-                        android:layout_gravity="center"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/white"
-                        android:background="#0C25FF"
-                        android:text="Cncel Request"
-                        android:visibility="invisible"
-                        android:id="@+id/btn_requested"
-                        android:padding="@dimen/_4sdp"
-                        android:layout_marginTop="@dimen/_3sdp"/>
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:background="#FF5722"
+                android:padding="@dimen/_4sdp"
+                android:text="Remove"
+                android:textColor="@color/white" />
 
-                </FrameLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    android:background="#FF5722"
-                    android:text="Remove"
-                    android:id="@+id/btn_remove"
-                    android:padding="@dimen/_4sdp"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_3sdp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/user_key"
-                    android:visibility="gone"/>
+            <TextView
+                android:id="@+id/user_key"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
 
 
-            </LinearLayout>
-
+        </LinearLayout>
 
 
     </LinearLayout>

@@ -51,7 +51,12 @@ public class Constants {
     public static final String KEY_FR_USER_KEY = "userId";
     public static final String KEY_FR_SENDER_KEY = "sender";
     public static final String KEY_FR_RECEIVER_KEY = "receiver";
+    public static final String KEY_FR_STATUS = "status";
     public static final String KEY_FR_IMAGE = "image";
     public static final String KEY_FR_ALREADY_SENT = "sent";
     public static final String KEY_FR_ALREADY_NOT_SENT = "not_sent";
+
+
+    public static final String KEY_FOR_FRIENDS_COLLECTION = "friends";
+    public static final String KEY_FOR_FACULTY_COLLECTION = "faculty";
 }
