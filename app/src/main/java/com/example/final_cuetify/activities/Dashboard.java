@@ -7,11 +7,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.ScrollView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
@@ -37,7 +40,10 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
     private ScrollView feeds_posting;
     private Button post_comfirm;
     private EditText post_writting_field;
-
+    private ProgressBar progressBar_Post;
+    private TextView show_hint;
+    private View transparent;
+    private View tranparent1;
 
     LottieAnimationView menuID, menuCancelID, myProfile, myFriends, myFaculty, myStudents,myfollower, following;
     LinearLayout hidden_layout_menu;
@@ -80,6 +86,7 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
                 .addOnSuccessListener(documentReference -> {
                     feeds_posting.setVisibility(View.INVISIBLE);
                     news_feed_rec_view.setVisibility(View.VISIBLE);
+                    progressBar_Post.setVisibility(View.INVISIBLE);
                     Toast.makeText(getApplicationContext(), "Posted Successfully", Toast.LENGTH_SHORT).show();
                     post_writting_field.setText("");
                     fetchDataForNewFeed();
@@ -100,6 +107,7 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
                 break;
             case R.id.btn_post:
                 if(isValidInput()) {
+                    progressBar_Post.setVisibility(View.VISIBLE);
                     postTheFeed();
                     feeds_posting.setVisibility(View.INVISIBLE);
                     news_feed_rec_view.setVisibility(View.VISIBLE);
@@ -174,7 +182,7 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
         feed_cancel_button = findViewById(R.id.back_add_feed_button);
         post_comfirm = findViewById(R.id.btn_post);
         news_feed_rec_view = findViewById(R.id.recycler_view_newFeed);
-        SpacingItem spacingItem = new SpacingItem(60);
+        SpacingItem spacingItem = new SpacingItem(80);
         news_feed_rec_view.addItemDecoration(spacingItem);
 
 
@@ -199,6 +207,11 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
         menuCancelID = findViewById(R.id.menu_id_cancel);
         menuID = findViewById(R.id.menu_id);
         hidden_layout_menu = findViewById(R.id.hiddenMenuID);
+        progressBar_Post = findViewById(R.id.progressBar_post);
+        show_hint = findViewById(R.id.showing_hint);
+        transparent = findViewById(R.id.transparentId);
+        tranparent1 = findViewById(R.id.trasparentID1);
+
 
         feed_cancel_button.setOnClickListener(this);
         post_comfirm.setOnClickListener(this);
@@ -211,8 +224,21 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
         menuID.setOnLongClickListener(this);
         following.setOnClickListener(this);
         myfollower.setOnClickListener(this);
-
         fetchDataForNewFeed();
+
+        show_hint.setVisibility(View.VISIBLE);
+        transparent.setVisibility(View.VISIBLE);
+        tranparent1.setVisibility(View.VISIBLE);
+        Handler handler = new Handler();
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                show_hint.setVisibility(View. INVISIBLE);
+                transparent.setVisibility(View.GONE);
+                tranparent1.setVisibility(View.GONE);
+            }
+        };
+        handler.postDelayed(runnable, 1000);
     }
 
 
@@ -253,5 +279,14 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
                    Toast.makeText(getApplicationContext(), "Unable to load feeds", Toast.LENGTH_SHORT).show();
                }
             });
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(menuCancelID.getVisibility() == View.VISIBLE || feeds_posting.getVisibility() == View.VISIBLE) {
+            menuCancelID.callOnClick();
+        } else {
+            super.onBackPressed();
+        }
     }
 }

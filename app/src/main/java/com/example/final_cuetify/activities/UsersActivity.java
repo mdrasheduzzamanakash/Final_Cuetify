@@ -83,9 +83,9 @@ public class UsersActivity extends AppCompatActivity implements UserListener {
 
     private void loading(Boolean isLoading) {
         if(isLoading) {
-            binding.progressBar.setVisibility(View.VISIBLE);
+            binding.progressBarSave.setVisibility(View.VISIBLE);
         } else{
-            binding.progressBar.setVisibility(View.INVISIBLE);
+            binding.progressBarSave.setVisibility(View.INVISIBLE);
         }
     }
 

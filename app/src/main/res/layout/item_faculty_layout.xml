@@ -65,10 +65,10 @@
             android:id="@+id/btn_connect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/black"
+            android:background="@drawable/button_background_green"
             android:padding="@dimen/_5sdp"
             android:text="Connect"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textStyle="bold"
             android:visibility="invisible" />
 
@@ -88,6 +88,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/status_message"
         android:textColor="@color/error"
+        android:textStyle="bold"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="@+id/status_message"
         app:layout_constraintTop_toBottomOf="@+id/status_message"

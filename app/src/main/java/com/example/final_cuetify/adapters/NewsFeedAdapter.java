@@ -1,6 +1,5 @@
 package com.example.final_cuetify.adapters;
 
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -28,9 +27,13 @@ import java.util.HashMap;
 
 public class NewsFeedAdapter extends RecyclerView.Adapter<NewsFeedAdapter.ViewHolder> {
     private ArrayList<NewsFeed> data;
-
+    Boolean isForProfile = false;
     public NewsFeedAdapter(ArrayList<NewsFeed> data) {
         this.data = data;
+    }
+    public NewsFeedAdapter(ArrayList<NewsFeed> data, String s) {
+        this.data = data;
+        isForProfile = true;
     }
 
     @NonNull
@@ -49,6 +52,11 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<NewsFeedAdapter.ViewHo
         holder.message.setText(this.data.get(position).message);
         holder.cnt.setText(data.get(position).getSum());
         holder.feedID.setText(data.get(position).feed_id);
+
+        if(isForProfile) {
+            holder.like.setVisibility(View.INVISIBLE);
+        }
+
     }
 
     @Override
@@ -167,7 +175,7 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<NewsFeedAdapter.ViewHo
 
 
         public void loadComment() {
-            itemView.findViewById(R.id.progressBar).setVisibility(View.VISIBLE);
+            itemView.findViewById(R.id.progressBarSave).setVisibility(View.VISIBLE);
             itemView.findViewById(R.id.hidden_comment_layout).setVisibility(View.GONE);
 
             String feed_id = feedID.getText().toString();
@@ -212,11 +220,11 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<NewsFeedAdapter.ViewHo
                                     }
                                 });
                                 comment_rec_view.setAdapter(new CommentAdapter(data));
-                                itemView.findViewById(R.id.progressBar).setVisibility(View.GONE);
+                                itemView.findViewById(R.id.progressBarSave).setVisibility(View.GONE);
                                 itemView.findViewById(R.id.hidden_comment_layout).setVisibility(View.VISIBLE);
                             }
                         }  else {
-                            itemView.findViewById(R.id.progressBar).setVisibility(View.GONE);
+                            itemView.findViewById(R.id.progressBarSave).setVisibility(View.GONE);
                             itemView.findViewById(R.id.hidden_comment_layout).setVisibility(View.VISIBLE);
                         }
                     })

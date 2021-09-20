@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">Final_Cuetify</string>
+    <string name="app_name">Cuetify</string>
+    <string name="deactivate_message">
+        Deleting your account will erase every data related to you. your posted feeds, messages, comments and reactions will be permanently deleted.
+        If you want to keep your data safe, please Deactivate your account. You will be automatically reactivated when you login again.
+    </string>
 </resources>

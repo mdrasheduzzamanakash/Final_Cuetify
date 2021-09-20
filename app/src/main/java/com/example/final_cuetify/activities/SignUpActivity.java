@@ -181,9 +181,9 @@ public class SignUpActivity extends AppCompatActivity {
     private void loading(Boolean isLoading){
         if(isLoading) {
             binding.buttonSignUp.setVisibility(View.INVISIBLE);
-            binding.progressBar.setVisibility(View.VISIBLE);
+            binding.progressBarSave.setVisibility(View.VISIBLE);
         } else {
-            binding.progressBar.setVisibility(View.INVISIBLE);
+            binding.progressBarSave.setVisibility(View.INVISIBLE);
             binding.buttonSignUp.setVisibility(View.VISIBLE);
         }
     }

@@ -191,7 +191,7 @@
                     android:layout_height="@dimen/_25sdp"
                     android:layout_gravity="center"
                     android:visibility="invisible"
-                    android:id="@+id/progressBar"/>
+                    android:id="@+id/progressBarSave"/>
 
             </FrameLayout>
 

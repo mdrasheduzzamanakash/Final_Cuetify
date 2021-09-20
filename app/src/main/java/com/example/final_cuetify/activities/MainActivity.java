@@ -25,19 +25,28 @@ import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements ConversionListener {
+public class MainActivity extends AppCompatActivity implements ConversionListener , View.OnClickListener{
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.imageProfile:
+                startActivity(new Intent(getApplicationContext(), MyProfile.class));
+        }
+    }
 
     private ActivityMainBinding binding;
     private PreferenceManager preferenceManager;
     private List<ChatMessage> conversations;
     private RecentConversionAdapter conversionAdapter;
     private FirebaseFirestore database;
+    private RoundedImageView profile;
 
 
     @Override
@@ -46,6 +55,8 @@ public class MainActivity extends AppCompatActivity implements ConversionListene
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         preferenceManager = new PreferenceManager(getApplicationContext());
+        profile = findViewById(R.id.imageProfile);
+        profile.setOnClickListener(this);
         init();
         loadUserDetails();
         getToken();
@@ -131,7 +142,7 @@ public class MainActivity extends AppCompatActivity implements ConversionListene
             conversionAdapter.notifyDataSetChanged();
             binding.conversationalRecyclerView.smoothScrollToPosition(0);
             binding.conversationalRecyclerView.setVisibility(View.VISIBLE);
-            binding.progressBar.setVisibility(View.GONE);
+            binding.progressBarSave.setVisibility(View.GONE);
         }
     };
 

@@ -5,21 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.MyProfile"
+    android:id="@+id/main_view"
     android:clipToPadding="false"
     android:orientation="vertical"
     android:overScrollMode="never"
-    android:background="@drawable/background_profile"
     android:scrollbars="none">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:background="@drawable/background_rec_solid"
+        android:padding="@dimen/_10sdp"
         android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/cloudSaved"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_clouddone"
+            android:visibility="invisible"
+            app:layout_constraintStart_toStartOf="@+id/textBio"
+            app:layout_constraintTop_toTopOf="@+id/profile_image" />
 
         <com.makeramen.roundedimageview.RoundedImageView
-            android:layout_width="@dimen/_171sdp"
-            android:layout_height="@dimen/_160sdp"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
             android:src="@drawable/image1"
             android:id="@+id/profile_image"
             app:layout_constraintStart_toStartOf="parent"
@@ -28,67 +36,449 @@
             app:riv_oval="true"/>
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="i am a new bie"
-            app:layout_constraintStart_toStartOf="@+id/profile_image"
-            app:layout_constraintEnd_toEndOf="@+id/profile_image"
-            android:gravity="center_horizontal"
-            android:id="@+id/textBio"
-            app:layout_constraintTop_toBottomOf="@+id/profile_image"/>
-
-        <View
-            android:layout_width="match_parent"
-            android:id="@+id/view"
-            android:layout_height="@dimen/_2sdp"
-            android:background="@color/primary"
-            app:layout_constraintTop_toBottomOf="@+id/textBio"/>
-
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Friend List"
-            app:layout_constraintTop_toBottomOf="@+id/view"
-            android:textSize="@dimen/_20sdp"
-            android:textStyle="bold"
-            android:gravity="center_horizontal"
-            android:id="@+id/frandListText"
-            android:layout_marginTop="@dimen/_20sdp"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/frandListText"
-            android:padding="@dimen/_20sdp"
-            android:maxHeight="@dimen/_300sdp"
-            android:id="@+id/profile_rec_friend_list"/>
-
-        <View
-            android:layout_width="match_parent"
-            android:id="@+id/view1"
-            android:layout_height="@dimen/_2sdp"
-            android:background="@color/primary"
-            app:layout_constraintTop_toBottomOf="@+id/profile_rec_friend_list"/>
-        <TextView
+            android:id="@+id/name_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Feed Posted"
-            app:layout_constraintTop_toBottomOf="@+id/view1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:gravity="center_horizontal"
+            android:text="MD Rasheduzzaman"
+            android:textSize="@dimen/_15sdp"
             android:textStyle="bold"
-            android:textSize="@dimen/_17sdp"
-            android:id="@+id/feedPostedText"/>
+            app:layout_constraintEnd_toEndOf="@+id/profile_image"
+            app:layout_constraintStart_toStartOf="@+id/profile_image"
+            app:layout_constraintTop_toBottomOf="@+id/profile_image" />
 
-        <androidx.recyclerview.widget.RecyclerView
+        <TextView
+            android:id="@+id/textBio"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:text="i am a new bie"
+            app:layout_constraintEnd_toEndOf="@+id/name_profile"
+            app:layout_constraintStart_toStartOf="@+id/name_profile"
+            app:layout_constraintTop_toBottomOf="@+id/name_profile" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/edit_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_edit"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.862"
+                    app:layout_constraintStart_toEndOf="@+id/profile_image"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <ImageView
+                    android:id="@+id/save"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_save"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.862"
+                    app:layout_constraintStart_toEndOf="@+id/profile_image"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:background="@drawable/button_background_green"
+                    android:padding="@dimen/_5sdp"/>
+                <ProgressBar
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_gravity="center"
+                    android:id="@+id/progressBarSave"/>
+
+            </FrameLayout>
+
+            <ImageView
+                android:id="@+id/profile_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:src="@drawable/ic_delete"
+                android:visibility="visible"
+                android:layout_gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.862"
+                app:layout_constraintStart_toEndOf="@+id/profile_image"
+                app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:animateLayoutChanges="true"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
+            android:id="@+id/deactivate_panel_id"
+            android:orientation="vertical"
+            android:background="@drawable/button_background_red"
+            app:layout_constraintTop_toBottomOf="@+id/textBio"
+            tools:layout_editor_absoluteX="13dp">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_warning"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/deactivating_warning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/deactivate_message"
+                android:textColor="@color/error"
+                android:textSize="@dimen/_14sdp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/deactivate_account_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_background_green"
+                    android:padding="@dimen/_5sdp"
+                    android:text="Deactivate account"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:id="@+id/deactivation_confirm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_5sdp"
+                    android:src="@drawable/ic_deactivate" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_background_red"
+                    android:padding="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_19sdp"
+                    android:text="Continue Deletion" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:id="@+id/delete_confirm"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_delete"
+                    android:layout_marginStart="@dimen/_5sdp"/>
+            </LinearLayout>
+        </LinearLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout_edit_profile_section"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/_20sdp"
-            android:id="@+id/profile_news_feed_posted"
-            app:layout_constraintTop_toBottomOf="@id/feedPostedText"/>
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:overScrollMode="never"
+            android:animateLayoutChanges="true"
+            android:visibility="visible"
+            android:scrollbars="none"
+            app:layout_constraintTop_toBottomOf="@+id/deactivate_panel_id"
+            tools:layout_editor_absoluteX="39dp">
 
+            <LinearLayout
+                android:id="@+id/profileEditPanel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/button_background_black"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_5sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Name"
+                        android:textColor="@color/black"
+                        android:textStyle="italic" />
+
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/profile_edittext_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/button_background_black"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_5sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="University ID"
+                        android:textColor="@color/black"
+                        android:textStyle="italic" />
+
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/profile_edittext_universityID"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/button_background_black"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_5sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Status"
+                        android:textColor="@color/black"
+                        android:textStyle="italic" />
+
+                    <EditText
+
+                        android:background="@null"
+                        android:id="@+id/profile_edittext_status"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/button_background_black"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_5sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Add Bio of your own"
+                        android:textColor="@color/black"
+                        android:textStyle="italic" />
+
+                    <EditText
+
+                        android:background="@null"
+                        android:id="@+id/profile_edittext_moto"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_10sdp"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout_edit_profile_section"
+            tools:layout_editor_absoluteX="39dp">
+
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/_24sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:id="@+id/expanding_friend"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="@dimen/_5sdp"
+                        android:src="@drawable/ic_expand" />
+                    <ImageView
+                        android:id="@+id/collapsingFriend"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="@dimen/_5sdp"
+                        android:visibility="gone"
+                        android:src="@drawable/ic_collapsing" />
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/friends_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Friends"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_20sdp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/isPublicText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_40sdp"
+                    android:text="private" />
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/isPrivate_friend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="true"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+                tools:layout_editor_absoluteX="13dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:background="@drawable/button_background_black"
+                    android:layout_height="@dimen/_270sdp"
+                    android:id="@+id/profile_friends_rec_view"
+                    tools:layout_editor_absoluteX="13dp" />
+                <ProgressBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/progressBar_Friend_rec_view"
+                    android:layout_gravity="center"/>
+            </FrameLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_10sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+
+            <LinearLayout
+                android:id="@+id/linearLayout4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:id="@+id/expanding_feed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="@dimen/_5sdp"
+                        android:src="@drawable/ic_expand" />
+                    <ImageView
+                        android:id="@+id/collapsingFeed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="@dimen/_5sdp"
+                        android:visibility="gone"
+                        android:src="@drawable/ic_collapsing" />
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/feeds_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Feeds"
+                    android:textSize="@dimen/_20sdp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/isPrivateTextFeeds"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_40sdp"
+                    android:text="private" />
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/isPrivate_feed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+                tools:layout_editor_absoluteX="13dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_270sdp"
+                    android:id="@+id/profile_feeds_rec_view"
+                    tools:layout_editor_absoluteX="13dp" />
+                <ProgressBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/progressBar_Feeds_rec_view"
+                    android:layout_gravity="center"/>
+            </FrameLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

@@ -3,9 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.39166666666666666" />
         <entry key="app/src/main/res/drawable-anydpi/ic_action_name.xml" value="0.3927083333333333" />
+        <entry key="app/src/main/res/drawable-anydpi/ic_clouddone.xml" value="0.37037037037037035" />
+        <entry key="app/src/main/res/drawable-anydpi/ic_delete.xml" value="0.1638888888888889" />
         <entry key="app/src/main/res/drawable-anydpi/ic_expand.xml" value="0.3927083333333333" />
         <entry key="app/src/main/res/drawable-hdpi/border_background_light.xml" value="0.3927083333333333" />
+        <entry key="app/src/main/res/drawable/all.xml" value="0.3927083333333333" />
         <entry key="app/src/main/res/drawable/animation_background.xml" value="0.3927083333333333" />
         <entry key="app/src/main/res/drawable/background_chat_input.xml" value="0.3927083333333333" />
         <entry key="app/src/main/res/drawable/background_content_bottom.xml" value="0.3927083333333333" />
@@ -20,11 +24,20 @@
         <entry key="app/src/main/res/drawable/background_recieved_message.xml" value="0.3927083333333333" />
         <entry key="app/src/main/res/drawable/background_sent_message.xml" value="0.3927083333333333" />
         <entry key="app/src/main/res/drawable/border_background.xml" value="0.3927083333333333" />
+        <entry key="app/src/main/res/drawable/border_ok.xml" value="0.38666666666666666" />
         <entry key="app/src/main/res/drawable/border_very_keen.xml" value="0.3927083333333333" />
         <entry key="app/src/main/res/drawable/button_background.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/button_background_black.xml" value="0.3927083333333333" />
+        <entry key="app/src/main/res/drawable/button_background_ok.xml" value="0.3927083333333333" />
+        <entry key="app/src/main/res/drawable/button_background_red.xml" value="0.3927083333333333" />
+        <entry key="app/src/main/res/drawable/high_border_red.xml" value="0.36302083333333335" />
         <entry key="app/src/main/res/drawable/ic_add.xml" value="0.3927083333333333" />
         <entry key="app/src/main/res/drawable/ic_add_comment.xml" value="0.3927083333333333" />
+        <entry key="app/src/main/res/drawable/ic_done.xml" value="0.37037037037037035" />
         <entry key="app/src/main/res/drawable/ic_home.xml" value="0.3927083333333333" />
+        <entry key="app/src/main/res/drawable/ic_save.xml" value="0.37037037037037035" />
+        <entry key="app/src/main/res/drawable/ic_warning.xml" value="0.3927083333333333" />
+        <entry key="app/src/main/res/drawable/transparent.xml" value="0.3927083333333333" />
         <entry key="app/src/main/res/layout/activity_chat.xml" value="0.3765625" />
         <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_faculty.xml" value="0.3765625" />

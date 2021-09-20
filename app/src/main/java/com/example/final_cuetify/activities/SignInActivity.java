@@ -76,10 +76,10 @@ public class SignInActivity extends AppCompatActivity {
     private void loading(Boolean isLoading) {
         if(isLoading) {
             binding.buttonSignIn.setVisibility(View.INVISIBLE);
-            binding.progressBar.setVisibility(View.VISIBLE);
+            binding.progressBarSave.setVisibility(View.VISIBLE);
         } else {
             binding.buttonSignIn.setVisibility(View.VISIBLE);
-            binding.progressBar.setVisibility(View.INVISIBLE);
+            binding.progressBarSave.setVisibility(View.INVISIBLE);
         }
     }
     private void showToast(String message) {

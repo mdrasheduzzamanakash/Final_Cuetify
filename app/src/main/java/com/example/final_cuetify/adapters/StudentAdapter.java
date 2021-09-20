@@ -58,19 +58,17 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.ViewHold
 
 
         private RoundedImageView profileImage;
-        private TextView name, uni_id, status, addFriend, remove, user_key, req_button, remove_btn;
+        private TextView name, uni_id, status, addFriend, user_key, req_button, remove_btn;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             profileImage = itemView.findViewById(R.id.image_st_item);
             name = itemView.findViewById(R.id.st_item_name);
             uni_id = itemView.findViewById(R.id.st_item_id);
             addFriend = itemView.findViewById(R.id.btn_add_friend);
-            remove = itemView.findViewById(R.id.btn_remove);
             status = itemView.findViewById(R.id.st_status);
             user_key = itemView.findViewById(R.id.user_key);
             req_button = itemView.findViewById(R.id.btn_requested);
             addFriend.setOnClickListener(this);
-            remove.setOnClickListener(this);
             req_button.setOnClickListener(this);
         }
 
@@ -83,8 +81,6 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.ViewHold
                     addFriend.setVisibility(View.INVISIBLE);
                     itemView.findViewById(R.id.progressBarAddFriend).setVisibility(View.VISIBLE);
                     funcionAddFriend();
-                    break;
-                case R.id.btn_remove:
                     break;
                 case R.id.image_st_item:
                     break;
@@ -159,7 +155,6 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.ViewHold
                         addFriend.setVisibility(View.VISIBLE);
                         addFriend.setText("Friend Request Sent");
                         addFriend.setBackgroundColor(Color.BLUE);
-                        remove.setVisibility(View.INVISIBLE);
                         Toast.makeText(itemView.getContext(),   "You can cancel the request from 'Following'", Toast.LENGTH_SHORT).show();
                     })
                     .addOnFailureListener(exception-> {

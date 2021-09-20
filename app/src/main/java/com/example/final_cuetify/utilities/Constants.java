@@ -2,6 +2,11 @@ package com.example.final_cuetify.utilities;
 
 public class Constants {
     public static final String KEY_COLLECTION_USERS = "users";
+    public static final String KEY_BIO = "user_bio";
+    public static final String KEY_PUBLIC = "public";
+    public static final String KEY_PRIVATE = "private";
+    public static final String KEY_IS_PRIVATE_FEED = "user_is_private_feed";
+    public static final String KEY_IS_PRIVATE_FRIENDS = "user_is_private_friends";
     public static final String KEY_NAME = "name";
     public static final String KEY_EMAIL = "email";
     public static final String KEY_PASSWORD = "password";
@@ -27,6 +32,9 @@ public class Constants {
     public static final String KEY_LAST_MESSAGE = "lastMessage";
     public static final String KEY_RECEIVER_IMAGE = "receiverImage";
     public static final String KEY_FEEDS = "feeds";
+    public static final String KEY_DEACTIVATION = "deactivation";
+    public static final String KEY_DEACTIVATED = "deactivated";
+    public static final String KEY_REACTIVATED = "reactivated";
 
     public static final String KEY_LIKE = "like";
     public static final String KEY_LOVE = "love";
@@ -60,4 +68,5 @@ public class Constants {
 
     public static final String KEY_FOR_FRIENDS_COLLECTION = "friends";
     public static final String KEY_FOR_FACULTY_COLLECTION = "faculty";
+
 }
