@@ -1,5 +1,8 @@
 package com.example.final_cuetify.adapters;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +15,7 @@ import com.example.final_cuetify.R;
 import com.example.final_cuetify.models.Faculty;
 import com.example.final_cuetify.utilities.Constants;
 import com.example.final_cuetify.utilities.PreferenceManager;
+import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.util.ArrayList;
 
@@ -31,6 +35,9 @@ public class FacultyAdapter extends RecyclerView.Adapter<FacultyAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        byte[] bytes = Base64.decode(data.get(holder.getAdapterPosition()).image, Base64.DEFAULT);
+        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+        holder.fac_profile_image.setImageBitmap(bitmap);
         PreferenceManager preferenceManager = new PreferenceManager(holder.itemView.getContext());
         if(preferenceManager.getString(Constants.KEY_STATUS).equals("student")) {
             holder.erro_message.setVisibility(View.VISIBLE);
@@ -50,7 +57,7 @@ public class FacultyAdapter extends RecyclerView.Adapter<FacultyAdapter.ViewHold
 
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        private  String encodedImage;
+        private RoundedImageView fac_profile_image;
         private TextView dep_name, name, email, connect, erro_message;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -59,6 +66,7 @@ public class FacultyAdapter extends RecyclerView.Adapter<FacultyAdapter.ViewHold
             email = itemView.findViewById(R.id.status_message);
             connect = itemView.findViewById(R.id.btn_connect);
             erro_message = itemView.findViewById(R.id.textView);
+            fac_profile_image = itemView.findViewById(R.id.fac_profile_image);
         }
     }
 }

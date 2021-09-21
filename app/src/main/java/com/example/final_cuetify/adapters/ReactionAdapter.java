@@ -1,5 +1,8 @@
 package com.example.final_cuetify.adapters;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +34,9 @@ public class ReactionAdapter extends RecyclerView.Adapter<ReactionAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        byte[] bytes = Base64.decode(data.get(holder.getAdapterPosition()).reacter_image, Base64.DEFAULT);
+        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+        holder.image.setImageBitmap(bitmap);
         if(data.get(holder.getAdapterPosition()).isLiked.equals("yes")) {
             holder.like.setVisibility(View.VISIBLE);
         } else if(data.get(holder.getAdapterPosition()).isLoved.equals("yes")) {

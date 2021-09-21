@@ -1,7 +1,10 @@
 package com.example.final_cuetify.activities;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -30,6 +33,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 public class MyProfile extends AppCompatActivity implements View.OnClickListener {
     @Override
@@ -540,6 +544,11 @@ public class MyProfile extends AppCompatActivity implements View.OnClickListener
 
     private void loadProfileData() {
         PreferenceManager preferenceManager = new PreferenceManager(this);
+        byte[] bytes = Base64.decode(preferenceManager.getString(Constants.KEY_IMAGE), Base64.DEFAULT);
+        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+        binding.profileImage.setImageBitmap(bitmap);
+        binding.nameProfile.setText(preferenceManager.getString(Constants.KEY_NAME));
+        binding.textBio.setText("add your bio");
         String my_key = preferenceManager.getString(Constants.KEY_USER_ID);
         FirebaseFirestore database = FirebaseFirestore.getInstance();
         database.collection(Constants.KEY_COLLECTION_USERS)
@@ -548,6 +557,7 @@ public class MyProfile extends AppCompatActivity implements View.OnClickListener
                 .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+
                         DocumentSnapshot documentSnapshot = task.getResult();
                         binding.profileEdittextName.setText(documentSnapshot.getString(Constants.KEY_NAME));
                         binding.profileEdittextUniversityID.setText(documentSnapshot.getString(Constants.KEY_UNI_ID));

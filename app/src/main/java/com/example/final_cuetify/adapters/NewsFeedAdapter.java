@@ -1,6 +1,9 @@
 package com.example.final_cuetify.adapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -35,6 +38,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -75,6 +79,13 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<NewsFeedAdapter.ViewHo
             holder.like.setVisibility(View.INVISIBLE);
         }
         PreferenceManager preferenceManager = new PreferenceManager(context.getApplicationContext());
+
+        byte[] bytes = Base64.decode(data.get(holder.getAdapterPosition()).image, Base64.DEFAULT);
+        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+        holder.feed_image.setImageBitmap(bitmap);
+
+
+
 
         FirebaseDatabase.getInstance().getReference(Constants.KEY_REACTIONS_COLLECTIONS).child(data.get(holder.getAdapterPosition()).feed_id).addValueEventListener(new ValueEventListener() {
             @Override
@@ -299,10 +310,12 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<NewsFeedAdapter.ViewHo
         private ImageView add_comment_button,see_all_reactions;
         private EditText commentWrittingEditText;
         private LinearLayout showCommentView;
+        private RoundedImageView feed_image;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
+            feed_image = itemView.findViewById(R.id.news_feed_profile_image);
             name = itemView.findViewById(R.id.news_feed_name);
             email = itemView.findViewById(R.id.news_feed_email);
             id = itemView.findViewById(R.id.news_feed_id);
@@ -381,6 +394,7 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<NewsFeedAdapter.ViewHo
 
 
         public void writeComment() {
+            PreferenceManager preferenceManager = new PreferenceManager(itemView.getContext());
 
             HashMap<String, Object> comment = new HashMap<>();
 
@@ -389,6 +403,7 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<NewsFeedAdapter.ViewHo
             comment.put(Constants.KEY_COMMENTER_MESSAGE, commentWrittingEditText.getText().toString());
             comment.put(Constants.KEY_COMMENTER_ID, id.getText().toString());
             comment.put(Constants.KEY_COMMENTER_STATUS, status.getText().toString());
+            comment.put(Constants.KEY_COMMENTER_IMAGE, preferenceManager.getString(Constants.KEY_IMAGE));
 
             FirebaseFirestore database = FirebaseFirestore.getInstance();
             database.collection(Constants.KEY_COMMENTS_COLLECTION)
@@ -422,6 +437,7 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<NewsFeedAdapter.ViewHo
                                 comment.comment_status = queryDocumentSnapshot.getString(Constants.KEY_COMMENTER_STATUS);
                                 comment.commenterId = queryDocumentSnapshot.getString(Constants.KEY_COMMENTER_ID);
                                 comment.commenterName = queryDocumentSnapshot.getString(Constants.KEY_COMMENTER_NAME);
+                                comment.commenterImage = queryDocumentSnapshot.getString(Constants.KEY_COMMENTER_IMAGE);
                                 data.add(comment);
 
                                 CommentAdapter adapter = new CommentAdapter(data);

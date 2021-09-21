@@ -1,5 +1,8 @@
 package com.example.final_cuetify.adapters;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,6 +34,14 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        byte[] bytes = Base64.decode(data.get(holder.getAdapterPosition()).my_image, Base64.DEFAULT);
+        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+        holder.imageMe.setImageBitmap(bitmap);
+
+        byte[] bytes1 = Base64.decode(data.get(holder.getAdapterPosition()).friend_imege, Base64.DEFAULT);
+        Bitmap bitmap1 = BitmapFactory.decodeByteArray(bytes1, 0, bytes1.length);
+        holder.imageFriend.setImageBitmap(bitmap1);
+
         holder.name_me.setText(data.get(holder.getAdapterPosition()).myName);
         holder.id_me.setText(data.get(holder.getAdapterPosition()).my_id);
         holder.name_friend.setText(data.get(holder.getAdapterPosition()).friend_name);

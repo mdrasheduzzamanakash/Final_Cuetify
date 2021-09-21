@@ -1,6 +1,9 @@
 package com.example.final_cuetify.adapters;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,8 +44,9 @@ public class FollowingAdapter extends RecyclerView.Adapter<FollowingAdapter.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.name.setText(data.get(holder.getAdapterPosition()).receiver);
-
-
+        byte[] bytes = Base64.decode(data.get(holder.getAdapterPosition()).image, Base64.DEFAULT);
+        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+        holder.pro_file_image.setImageBitmap(bitmap);
 
 
         holder.cancel_req.setOnClickListener(new View.OnClickListener() {
@@ -92,6 +96,7 @@ public class FollowingAdapter extends RecyclerView.Adapter<FollowingAdapter.View
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            pro_file_image = itemView.findViewById(R.id.fac_profile_image);
             name = itemView.findViewById(R.id.following_name);
             cancel_req = itemView.findViewById(R.id.btn_cancel_request);
             progressBar = itemView.findViewById(R.id.progressBarCancelReq);

@@ -27,7 +27,7 @@
 
         <com.makeramen.roundedimageview.RoundedImageView
             android:layout_width="@dimen/_100sdp"
-            android:layout_height="@dimen/_100sdp"
+            android:layout_height="@dimen/_80sdp"
             android:src="@drawable/image1"
             android:id="@+id/profile_image"
             app:layout_constraintStart_toStartOf="parent"

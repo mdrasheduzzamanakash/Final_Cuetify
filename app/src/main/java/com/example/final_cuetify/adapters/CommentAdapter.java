@@ -1,5 +1,8 @@
 package com.example.final_cuetify.adapters;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +15,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.final_cuetify.R;
 import com.example.final_cuetify.models.Comments;
+import com.example.final_cuetify.utilities.Constants;
+import com.example.final_cuetify.utilities.PreferenceManager;
 import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHolderComment> {
     private ArrayList<Comments> data;
@@ -34,6 +40,10 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolderComment holder, int position) {
         holder.comment_message.setText(data.get(position).comment_message);
+        PreferenceManager preferenceManager = new PreferenceManager(holder.itemView.getContext());
+        byte[] bytes = Base64.decode(data.get(holder.getAdapterPosition()).commenterImage, Base64.DEFAULT);
+        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+        holder.profileImage.setImageBitmap(bitmap);
     }
 
     @Override
