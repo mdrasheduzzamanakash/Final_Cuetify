@@ -269,7 +269,7 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
                    findViewById(R.id.progressBarNewsFeed).setVisibility(View.INVISIBLE);
                    news_feed_rec_view.setVisibility(View.VISIBLE);
 
-                   NewsFeedAdapter adapter = new NewsFeedAdapter(data);
+                   NewsFeedAdapter adapter = new NewsFeedAdapter(data, getApplicationContext());
                    adapter.notifyDataSetChanged();
                    news_feed_rec_view = findViewById(R.id.recycler_view_newFeed);
                    news_feed_rec_view.setLayoutManager(new LinearLayoutManager(this));

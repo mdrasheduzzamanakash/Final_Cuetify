@@ -35,6 +35,7 @@ public class Constants {
     public static final String KEY_DEACTIVATION = "deactivation";
     public static final String KEY_DEACTIVATED = "deactivated";
     public static final String KEY_REACTIVATED = "reactivated";
+    public static final String KEY_REACTIONS_COLLECTIONS = "reactions";
 
     public static final String KEY_LIKE = "like";
     public static final String KEY_LOVE = "love";

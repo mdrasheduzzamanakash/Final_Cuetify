@@ -5,6 +5,7 @@
     android:elevation="@dimen/_30sdp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -131,6 +132,15 @@
                 android:layout_height="@dimen/_30sdp"
                 app:lottie_rawRes="@raw/comment"
                 android:id="@+id/news_feed_comment"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/allreactions"
+                android:src="@drawable/ic_groups"
+                android:paddingStart="@dimen/_10sdp"
+                android:layout_gravity="center"/>
+
             <TextView
                 android:layout_width="@dimen/_30sdp"
                 android:layout_height="@dimen/_30sdp"
@@ -139,6 +149,8 @@
                 android:paddingLeft="@dimen/_8sdp"
                 android:paddingTop="@dimen/_8sdp"
                 android:text="20" />
+
+
         </LinearLayout>
 
         <LinearLayout
@@ -208,6 +220,12 @@
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:id="@+id/rec_reactions"/>
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

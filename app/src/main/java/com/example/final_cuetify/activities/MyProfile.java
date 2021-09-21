@@ -203,6 +203,60 @@ public class MyProfile extends AppCompatActivity implements View.OnClickListener
 
                                         } else {
                                             binding.deactivatingWarning.setText("You had no posted feeds to delete\n");
+                                            binding.deactivatingWarning.append("Friend Request are being removed....");
+
+                                            String my_key = preferenceManager.getString(Constants.KEY_USER_ID);
+                                            database.collection(Constants.KEY_COLLECTION_FRIEND_REQUEST)
+                                                    .get()
+                                                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                                        @Override
+                                                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                            ArrayList<String> allFR = new ArrayList<>();
+                                                            if (task.getResult() != null && task.getResult().size() > 0) {
+                                                                for (DocumentSnapshot documentSnapshot : task.getResult()) {
+
+                                                                    if (documentSnapshot.getString(Constants.KEY_FR_SENDER_KEY) != null && documentSnapshot.getString(Constants.KEY_FR_RECEIVER_KEY) != null) {
+                                                                        if (documentSnapshot.getString(Constants.KEY_FR_SENDER_KEY).equals(my_key) || documentSnapshot.getString(Constants.KEY_FR_RECEIVER_KEY).equals(my_key)) {
+                                                                            allFR.add(documentSnapshot.getId());
+                                                                        }
+                                                                    }
+
+                                                                }
+                                                                for (String fr : allFR) {
+                                                                    database.collection(Constants.KEY_COLLECTION_FRIEND_REQUEST)
+                                                                            .document(fr)
+                                                                            .delete();
+                                                                }
+                                                                binding.deactivatingWarning.append("All friends request are deleted\nDeleting all Friends you made...");
+                                                                ArrayList<String> allFriends = new ArrayList<>();
+                                                                database.collection(Constants.KEY_FOR_FRIENDS_COLLECTION)
+                                                                        .get()
+                                                                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                                                            @Override
+                                                                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                                                if (task.getResult() != null && task.getResult().size() > 0) {
+                                                                                    for (DocumentSnapshot documentSnapshot : task.getResult()) {
+
+                                                                                        if (documentSnapshot.getString("my_key") != null && documentSnapshot.getString("my_key").equals(my_key)) {
+                                                                                            allFriends.add(documentSnapshot.getId());
+                                                                                        }
+
+                                                                                    }
+                                                                                    for (String f : allFriends) {
+                                                                                        database.collection(Constants.KEY_FOR_FRIENDS_COLLECTION)
+                                                                                                .document(f)
+                                                                                                .delete();
+                                                                                    }
+
+                                                                                    binding.deactivatingWarning.append("Deleted all of your friends..\n Done....\n Please fell free to open an another account.");
+                                                                                }
+                                                                            }
+                                                                        });
+                                                            }
+                                                        }
+                                                    });
+
+
                                         }
                                     }
                                 });
@@ -438,7 +492,7 @@ public class MyProfile extends AppCompatActivity implements View.OnClickListener
                                 data.add(newsFeed);
                             }
                         }
-                        NewsFeedAdapter adapter = new NewsFeedAdapter(data, "P");
+                        NewsFeedAdapter adapter = new NewsFeedAdapter(data, "P", getApplicationContext());
                         binding.profileFeedsRecView.setLayoutManager(new LinearLayoutManager(this));
                         binding.profileFeedsRecView.setAdapter(adapter);
                         binding.progressBarFeedsRecView.setVisibility(View.INVISIBLE);
